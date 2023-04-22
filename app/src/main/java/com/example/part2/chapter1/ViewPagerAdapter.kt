@@ -10,16 +10,23 @@ class ViewPagerAdapter(private val mainActivity: MainActivity) :
         return 3
     }
 
+    // 복습
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> {
-                return WebViewFragment()
+                return WebViewFragment(position,"https://comic.naver.com/webtoon/detail?titleId=703846&no=259").apply {
+                    listener = mainActivity
+                }
             }
             1 -> {
-                return BFragment()
+                return WebViewFragment(position, "https://comic.naver.com/webtoon?tab=mon").apply {
+                    listener = mainActivity
+                }
             }
             else -> {
-                return WebViewFragment()
+                return WebViewFragment(position, "https://comic.naver.com/webtoon/list?titleId=650305").apply {
+                    listener = mainActivity
+                }
             }
         }
 
